@@ -30,7 +30,7 @@ class BatchRecord:
     """One batch's progress through the pipeline.
 
     Persisted as a member of `PipelineState.batches`. Field names are stable
-    across versions of oaibatch because old `state.json` files must round-trip
+    across versions of oai-batchkit because old `state.json` files must round-trip
     cleanly through new code.
     """
 
@@ -70,7 +70,7 @@ class PipelineState:
     """Full pipeline state for one run, serialised to `<run_dir>/state.json`."""
 
     run_id: str = ""
-    """Unique identifier for this run instance, e.g. 'oaibatch-gpt-5.4-nano-2026-04-30-1605'."""
+    """Unique identifier for this run instance, e.g. 'oai-batchkit-gpt-5.4-nano-2026-04-30-1605'."""
 
     task_name: str = ""
     """The `BatchTask.name` of the task that owns this run."""

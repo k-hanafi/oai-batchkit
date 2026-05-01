@@ -1,7 +1,7 @@
 """The BatchTask plug-in protocol and supporting types.
 
 A `BatchTask` is the single integration point a user implements to plug a new
-workload into oaibatch. The framework owns everything else: file building,
+workload into oai-batchkit. The framework owns everything else: file building,
 upload, batch creation, sliding-window queue control, polling, download,
 parsing, retry, merging, cost reporting.
 
@@ -11,7 +11,7 @@ to model variants, prompt variants, dataset slices, or any other experimental
 factor.
 
 This module is the canonical place to look for the task-author API. Everything
-in `oaibatch.core` is internal to the framework.
+in `oai_batchkit.core` is internal to the framework.
 """
 
 from __future__ import annotations
@@ -33,7 +33,7 @@ prompt-version, dataset-slice, etc.) lives in here. Persisted into `run.yaml`.""
 class Endpoint(str, Enum):
     """Which OpenAI Batch endpoint a task targets.
 
-    The Batch API supports four endpoints; oaibatch is endpoint-agnostic at the
+    The Batch API supports four endpoints; oai-batchkit is endpoint-agnostic at the
     framework level, so a single task chooses one of these and the builder /
     downloader paths route accordingly.
     """
@@ -99,7 +99,7 @@ class BatchTask(Protocol):
     def cache_key(self, params: Params) -> str:
         """The OpenAI `prompt_cache_key`. Typically a stable slug derived from
         `name` + a fingerprint of `system_prompt(params)`. Default impls in
-        `oaibatch.core.builder` compute this for you.
+        `oai_batchkit.core.builder` compute this for you.
         """
         raise NotImplementedError
 

@@ -1,6 +1,6 @@
-"""Typer-based CLI for oaibatch.
+"""Typer-based CLI for oai-batchkit.
 
-Every subcommand is registered here so `oaibatch --help` is the public
+Every subcommand is registered here so `oai-batchkit --help` is the public
 specification of the framework's surface area. Command bodies are stubs
 (`raise NotImplementedError`) at scaffolding time; subsequent
 implementation phases fill them in.
@@ -26,7 +26,7 @@ from typing import Annotated, Optional
 import typer
 
 app = typer.Typer(
-    name="oaibatch",
+    name="oai-batchkit",
     help=(
         "A generalizable CLI for OpenAI's Batch API. Take any structured-output "
         "task from CSV to merged results without rewriting infrastructure."
@@ -172,7 +172,7 @@ def list_runs(
     ] = None,
     all_projects: Annotated[
         bool,
-        typer.Option("--all-projects", help="Scan every project under ~/.oaibatch/projects/."),
+        typer.Option("--all-projects", help="Scan every project under ~/.oai-batchkit/projects/."),
     ] = False,
 ) -> None:
     """List every run with status badges, cost so far, and last-activity time."""
@@ -315,8 +315,8 @@ def webhook(
 
 @app.command()
 def version() -> None:
-    """Print the oaibatch version and exit."""
-    from oaibatch import __version__
+    """Print the oai-batchkit version and exit."""
+    from oai_batchkit import __version__
 
     typer.echo(__version__)
 

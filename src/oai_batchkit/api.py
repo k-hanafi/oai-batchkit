@@ -26,9 +26,9 @@ from collections.abc import Mapping
 from pathlib import Path
 from typing import Any
 
-from oaibatch.core.state import PipelineState
-from oaibatch.core.tokens import CostEstimate
-from oaibatch.task import BatchTask, InputSource
+from oai_batchkit.core.state import PipelineState
+from oai_batchkit.core.tokens import CostEstimate
+from oai_batchkit.task import BatchTask, InputSource
 
 
 class Run:
@@ -143,14 +143,14 @@ class Run:
     def inspect(self, custom_id: str) -> dict[str, Any]:
         """Return the request body, raw response, parsed output, validation
         status, and cost-of-this-row for one custom_id. Used by
-        `oaibatch inspect`."""
+        `oai-batchkit inspect`."""
         raise NotImplementedError
 
 
 class RunRegistry:
     """Discover all runs under a project root.
 
-    Used by `oaibatch list` to produce the global status table.
+    Used by `oai-batchkit list` to produce the global status table.
     """
 
     @staticmethod

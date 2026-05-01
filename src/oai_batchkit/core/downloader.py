@@ -17,8 +17,8 @@ from typing import Any
 
 from openai import OpenAI
 
-from oaibatch.core.state import PipelineState
-from oaibatch.task import BatchTask, Endpoint, Params
+from oai_batchkit.core.state import PipelineState
+from oai_batchkit.task import BatchTask, Endpoint, Params
 
 
 def assistant_text_from_response(body: dict[str, Any], endpoint: Endpoint) -> str | None:

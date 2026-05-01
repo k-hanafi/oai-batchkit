@@ -1,6 +1,6 @@
 """Per-run advisory lock to prevent concurrent CLI invocations from colliding.
 
-Two `oaibatch submit --run X` calls running simultaneously would double-
+Two `oai-batchkit submit --run X` calls running simultaneously would double-
 upload files and corrupt `state.json`. The lockfile makes the second
 invocation refuse with a clear error pointing at the holder PID.
 
@@ -17,7 +17,7 @@ from types import TracebackType
 
 
 class RunLockError(RuntimeError):
-    """Another oaibatch process holds the run's lock.
+    """Another oai-batchkit process holds the run's lock.
 
     The error message includes the holder PID and acquisition time so the
     user can decide whether to wait, kill, or override.

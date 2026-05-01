@@ -3,7 +3,7 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "oaibatch"
+name = "oai-batchkit"
 version = "0.0.1"
 description = "A generalizable CLI and Python framework for the OpenAI Batch API. Take any structured-output task from CSV to merged results without rewriting infrastructure."
 readme = "README.md"
@@ -61,18 +61,19 @@ notify = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/k-hanafi/oaibatch"
-Repository = "https://github.com/k-hanafi/oaibatch"
-Issues = "https://github.com/k-hanafi/oaibatch/issues"
+Homepage = "https://github.com/k-hanafi/oai-batchkit"
+Repository = "https://github.com/k-hanafi/oai-batchkit"
+Issues = "https://github.com/k-hanafi/oai-batchkit/issues"
 
 [project.scripts]
-oaibatch = "oaibatch.cli:app"
+oai-batchkit = "oai_batchkit.cli:app"
+obk = "oai_batchkit.cli:app"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-oaibatch = ["pricing.json", "py.typed"]
+oai_batchkit = ["pricing.json", "py.typed"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -2,7 +2,7 @@
 
 Only depends on `requests` (declared in the `notify` extras). Wire up via:
 
-    pip install 'oaibatch[notify]'
+    pip install 'oai-batchkit[notify]'
 
     notifier = SlackNotifier(webhook_url=os.environ["OAIBATCH_SLACK_WEBHOOK"])
     run.submit(notifiers=[notifier])
@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from oaibatch.api import Run
+    from oai_batchkit.api import Run
 
 
 class SlackNotifier:

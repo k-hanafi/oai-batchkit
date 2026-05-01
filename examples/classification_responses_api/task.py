@@ -1,15 +1,15 @@
 """Example: structured-output classification via the Responses API.
 
-This is the canonical oaibatch task shape: one Pydantic schema, one system
+This is the canonical oai-batchkit task shape: one Pydantic schema, one system
 prompt, one row formatter. The framework handles every other concern.
 
-Run it (once oaibatch's commands are implemented):
+Run it (once oai-batchkit's commands are implemented):
 
-    oaibatch new examples.classification_responses_api.task:ClassificationTask \\
+    oai-batchkit new examples.classification_responses_api.task:ClassificationTask \\
         --run pilot --params model=gpt-5.4-nano
 
-    oaibatch prepare --run pilot --data data/sample.csv --dry-run
-    oaibatch run     --run pilot --data data/sample.csv
+    oai-batchkit prepare --run pilot --data data/sample.csv --dry-run
+    oai-batchkit run     --run pilot --data data/sample.csv
 """
 
 from __future__ import annotations
@@ -19,7 +19,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
-from oaibatch.task import BatchTask, Endpoint, InputSource
+from oai_batchkit.task import BatchTask, Endpoint, InputSource
 
 
 class ClassificationResult(BaseModel):
@@ -32,7 +32,7 @@ class ClassificationResult(BaseModel):
 
 
 class ClassificationTask:
-    """A worked example task. Implements the [oaibatch.task.BatchTask][] Protocol."""
+    """A worked example task. Implements the [oai_batchkit.task.BatchTask][] Protocol."""
 
     name: str = "example-classification"
     endpoint: Endpoint = Endpoint.RESPONSES

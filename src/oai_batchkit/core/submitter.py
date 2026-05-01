@@ -14,7 +14,7 @@ from pathlib import Path
 
 from openai import OpenAI
 
-from oaibatch.task import Endpoint
+from oai_batchkit.task import Endpoint
 
 
 class BillingLimitError(RuntimeError):
@@ -66,7 +66,7 @@ def create_batch(
     raise NotImplementedError
 
 
-def generate_run_id(model: str, prefix: str = "oaibatch") -> str:
-    """Generate a unique run_id like 'oaibatch-gpt-5.4-nano-2026-04-30-1605'."""
+def generate_run_id(model: str, prefix: str = "oai-batchkit") -> str:
+    """Generate a unique run_id like 'oai-batchkit-gpt-5.4-nano-2026-04-30-1605'."""
     _ = datetime.datetime  # placeholder to keep mypy happy on the import
     raise NotImplementedError

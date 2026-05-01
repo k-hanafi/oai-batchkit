@@ -11,7 +11,7 @@ from __future__ import annotations
 from collections.abc import Iterable, Mapping
 from typing import Any
 
-from oaibatch.task import BatchTask, Endpoint, InputSource
+from oai_batchkit.task import BatchTask, Endpoint, InputSource
 
 
 class ModerationsTask:

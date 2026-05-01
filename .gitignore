@@ -71,7 +71,7 @@ keys/
 *.pem
 *.key
 
-# oaibatch runtime artefacts (when the framework runs against real workloads)
+# oai-batchkit runtime artefacts (when the framework runs against real workloads)
 runs/
 *.log
 *.lockfile

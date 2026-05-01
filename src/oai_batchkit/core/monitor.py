@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from openai import OpenAI
 
-from oaibatch.core.state import BatchRecord, PipelineState
+from oai_batchkit.core.state import BatchRecord, PipelineState
 
 POLL_INTERVAL_SECONDS: int = 30
 """How often to poll in-flight batches. Conservative; the API is fine with
@@ -68,6 +68,6 @@ def print_status(state: PipelineState, client: OpenAI) -> None:
 def dashboard_url(run_id: str) -> str:
     """OpenAI dashboard URL filtered to this run's batches via metadata.run_id.
 
-    Used by `oaibatch open --run <name>` to deep-link into the platform UI.
+    Used by `oai-batchkit open --run <name>` to deep-link into the platform UI.
     """
     raise NotImplementedError

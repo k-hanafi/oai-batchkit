@@ -11,7 +11,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from oaibatch.core.state import PipelineState
+from oai_batchkit.core.state import PipelineState
 
 
 def merge_batch_csvs(

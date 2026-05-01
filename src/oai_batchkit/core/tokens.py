@@ -26,7 +26,7 @@ class CostEstimate:
 
     Returned by `estimate_cost` and `estimate_from_jsonl`. The
     `format_report` method renders the human-readable breakdown shown by
-    `oaibatch prepare --dry-run` and `oaibatch estimate <jsonl>`.
+    `oai-batchkit prepare --dry-run` and `oai-batchkit estimate <jsonl>`.
     """
 
     model: str
@@ -54,7 +54,7 @@ class CostEstimate:
 def load_pricing(override: Path | None = None) -> dict[str, dict[str, float]]:
     """Load the per-model pricing table.
 
-    Reads the packaged `oaibatch/pricing.json` by default. If `override` is
+    Reads the packaged `oai-batchkit/pricing.json` by default. If `override` is
     provided, deep-merges it on top of the defaults so projects can pin
     custom rates without forking the package.
     """
@@ -99,7 +99,7 @@ def estimate_from_jsonl(
 ) -> CostEstimate:
     """Estimate cost from any pre-built JSONL request file.
 
-    Used by `oaibatch estimate <jsonl>` to vet hand-built batch files before
+    Used by `oai-batchkit estimate <jsonl>` to vet hand-built batch files before
     submission, and by tests to verify the estimator against fixture data.
     """
     raise NotImplementedError

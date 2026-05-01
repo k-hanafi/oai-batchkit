@@ -5,7 +5,7 @@ plain text so it's grep-friendly when the run dir is shipped or archived.
 
 The `setup_logging` function is idempotent: calling it twice in one process
 does not double-attach handlers. This matters because the CLI may invoke
-multiple `Run` methods in one process (e.g. `oaibatch run` calls prepare
+multiple `Run` methods in one process (e.g. `oai-batchkit run` calls prepare
 then submit then download then merge).
 """
 

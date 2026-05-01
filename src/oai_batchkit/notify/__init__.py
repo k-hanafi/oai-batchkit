@@ -12,6 +12,6 @@ without breaking existing notifiers.
 
 from __future__ import annotations
 
-from oaibatch.notify.base import Notifier
+from oai_batchkit.notify.base import Notifier
 
 __all__ = ["Notifier"]

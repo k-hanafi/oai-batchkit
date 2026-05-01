@@ -18,7 +18,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from oaibatch.task import BatchTask, Endpoint, Params, Row
+from oai_batchkit.task import BatchTask, Endpoint, Params, Row
 
 
 def openai_strict_schema(schema: dict[str, Any]) -> dict[str, Any]:

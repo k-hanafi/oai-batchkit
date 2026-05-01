@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from oaibatch.core.state import PipelineState
+from oai_batchkit.core.state import PipelineState
 
 
 def rebuild_jsonl_for_failed(

@@ -10,7 +10,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Protocol, runtime_checkable
 
 if TYPE_CHECKING:
-    from oaibatch.api import Run
+    from oai_batchkit.api import Run
 
 
 @runtime_checkable

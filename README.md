@@ -1,4 +1,4 @@
-# oaibatch
+# oai-batchkit
 
 A generalizable CLI and Python framework for the [OpenAI Batch API](https://platform.openai.com/docs/guides/batch). Take any structured-output task from CSV to merged results without rewriting infrastructure.
 
@@ -21,7 +21,7 @@ Every research project that uses OpenAI's Batch API ends up reimplementing the s
 - A merger that produces the final CSV plus a cost report
 - An atomic JSON checkpoint so the whole pipeline is resumable
 
-I built this code three times across two research projects before deciding it should be one library. **oaibatch** is that library: the infrastructure stays, the task-specific bits become a single ~80-line plug-in.
+I built this code three times across two research projects before deciding it should be one library. **oai-batchkit** is that library: the infrastructure stays, the task-specific bits become a single ~80-line plug-in.
 
 The duplication problem in two existing repos:
 
@@ -42,7 +42,7 @@ Becomes:
 
 ```mermaid
 flowchart LR
-    subgraph oai [oaibatch package]
+    subgraph oai [oai-batchkit package]
         cli[Typer CLI]
         api[Run API]
         engine[core engine]
@@ -61,7 +61,7 @@ flowchart LR
 
 ```mermaid
 flowchart TB
-    subgraph corepkg [oaibatch package]
+    subgraph corepkg [oai-batchkit package]
         cli[Typer CLI]
         api[Python API: Run, RunRegistry]
         task[BatchTask Protocol]
@@ -88,9 +88,9 @@ Three concepts you only need to learn once:
 ## CLI surface (preview)
 
 ```text
-$ oaibatch --help
+$ oai-batchkit --help
 
-  oaibatch is a generalizable CLI for OpenAI's Batch API.
+  oai-batchkit is a generalizable CLI for OpenAI's Batch API.
 
   Lifecycle:
     new        Bootstrap a new run directory
@@ -128,7 +128,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
-from oaibatch.task import BatchTask, Endpoint, InputSource
+from oai_batchkit.task import BatchTask, Endpoint, InputSource
 
 
 class ClassificationResult(BaseModel):
@@ -170,22 +170,22 @@ Three example tasks live under [`examples/`](examples/) — one per supported en
 pip install -e .
 
 # Bootstrap a new run
-oaibatch new examples.classification_responses_api.task:ClassificationTask \
+oai-batchkit new examples.classification_responses_api.task:ClassificationTask \
   --run pilot --params model=gpt-5.4-nano
 
 # Pre-flight cost estimate
-oaibatch prepare --run pilot --data data/sample.csv --dry-run
+oai-batchkit prepare --run pilot --data data/sample.csv --dry-run
 
 # Real run with sliding-window submission
-oaibatch run --run pilot --data data/sample.csv --concurrency 3
+oai-batchkit run --run pilot --data data/sample.csv --concurrency 3
 
 # Inspect one row end-to-end
-oaibatch inspect --run pilot --custom-id sentiment-abc123
+oai-batchkit inspect --run pilot --custom-id sentiment-abc123
 ```
 
 ## Endpoint coverage
 
-oaibatch is endpoint-agnostic at the framework level. A single `BatchTask` chooses one of:
+oai-batchkit is endpoint-agnostic at the framework level. A single `BatchTask` chooses one of:
 
 | Endpoint              | Schema injection            | Use case                      |
 | --------------------- | --------------------------- | ----------------------------- |
@@ -213,8 +213,8 @@ flowchart TB
     p0["Phase 0: Scaffolding (this commit)<br/>typed Protocol stubs, CLI surface, README, examples"]
     p1["Phase 1: Lift + generalize core engine<br/>builder for all 4 endpoints, decoupled state, pricing.json loader"]
     p2["Phase 2: Tier 1 CLI bodies<br/>new, prepare, submit, status, download, retry, merge, run, test"]
-    p3["Phase 3: Migrate ai-native-startup-classification onto oaibatch"]
-    p4["Phase 4: Migrate llm_directness_experiment onto oaibatch"]
+    p3["Phase 3: Migrate ai-native-startup-classification onto oai-batchkit"]
+    p4["Phase 4: Migrate llm_directness_experiment onto oai-batchkit"]
     p5["Phase 5: Tier 2 CLI bodies<br/>list, inspect, validate, cancel, cleanup, logs, estimate, cost, cache-report"]
     p6["Phase 6: Docs + tests<br/>README quickstarts per endpoint, mocked end-to-end test"]
     p7["Phase 7 (deferred): Tier 3 differentiators<br/>matrix, diff, notify, daemon, webhook serve"]
@@ -227,16 +227,16 @@ flowchart TB
 
 Phase 0 is what this commit ships. The full plan lives in the originating Cursor planning doc; this README is the public face of the work.
 
-Until Tier 1 lands, the CLI is useful for one thing: showing the surface. `oaibatch --help` is the public spec.
+Until Tier 1 lands, the CLI is useful for one thing: showing the surface. `oai-batchkit --help` is the public spec.
 
 ## Install
 
 ```bash
-git clone https://github.com/k-hanafi/oaibatch.git
-cd oaibatch
+git clone https://github.com/k-hanafi/oai-batchkit.git
+cd oai-batchkit
 pip install -e ".[dev]"
 pytest -q
-oaibatch --help
+oai-batchkit --help
 ```
 
 ## Contributing

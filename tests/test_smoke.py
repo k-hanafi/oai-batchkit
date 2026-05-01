@@ -9,23 +9,23 @@ from __future__ import annotations
 
 from typer.testing import CliRunner
 
-import oaibatch
-from oaibatch.cli import app
+import oai_batchkit
+from oai_batchkit.cli import app
 
 
 def test_package_exports_public_api() -> None:
     """The advertised top-level imports must all resolve."""
-    assert hasattr(oaibatch, "__version__")
-    assert hasattr(oaibatch, "BatchTask")
-    assert hasattr(oaibatch, "Endpoint")
-    assert hasattr(oaibatch, "Run")
-    assert hasattr(oaibatch, "BatchRecord")
-    assert hasattr(oaibatch, "PipelineState")
-    assert hasattr(oaibatch, "CostEstimate")
+    assert hasattr(oai_batchkit, "__version__")
+    assert hasattr(oai_batchkit, "BatchTask")
+    assert hasattr(oai_batchkit, "Endpoint")
+    assert hasattr(oai_batchkit, "Run")
+    assert hasattr(oai_batchkit, "BatchRecord")
+    assert hasattr(oai_batchkit, "PipelineState")
+    assert hasattr(oai_batchkit, "CostEstimate")
 
 
 def test_cli_help_lists_all_tier_one_commands() -> None:
-    """`oaibatch --help` must enumerate every Tier 1 lifecycle command."""
+    """`oai-batchkit --help` must enumerate every Tier 1 lifecycle command."""
     runner = CliRunner()
     result = runner.invoke(app, ["--help"])
     assert result.exit_code == 0, result.stdout
@@ -66,7 +66,7 @@ def test_version_command_prints_package_version() -> None:
     runner = CliRunner()
     result = runner.invoke(app, ["version"])
     assert result.exit_code == 0
-    assert oaibatch.__version__ in result.stdout
+    assert oai_batchkit.__version__ in result.stdout
 
 
 def test_pricing_json_is_packaged_and_well_formed() -> None:
@@ -74,7 +74,7 @@ def test_pricing_json_is_packaged_and_well_formed() -> None:
     import json
     from importlib import resources
 
-    raw = resources.files("oaibatch").joinpath("pricing.json").read_text()
+    raw = resources.files("oai_batchkit").joinpath("pricing.json").read_text()
     data = json.loads(raw)
     assert "discounts" in data
     assert "models" in data
