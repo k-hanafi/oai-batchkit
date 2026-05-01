@@ -1,0 +1,7 @@
+task: examples.embeddings_corpus.task:EmbeddingsTask
+name: corpus-v1
+model: text-embedding-3-large
+batch_size: 50000
+endpoint: /v1/embeddings
+params: {}
+data: data/corpus.csv

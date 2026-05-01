@@ -1,0 +1,8 @@
+task: examples.classification_responses_api.task:ClassificationTask
+name: pilot
+model: gpt-5.4-nano
+batch_size: 5000
+endpoint: /v1/responses
+params:
+  prompt_version: v1
+data: data/sample.csv

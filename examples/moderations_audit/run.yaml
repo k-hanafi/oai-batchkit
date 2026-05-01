@@ -1,0 +1,7 @@
+task: examples.moderations_audit.task:ModerationsTask
+name: audit-v1
+model: omni-moderation-latest
+batch_size: 50000
+endpoint: /v1/moderations
+params: {}
+data: data/posts.csv
