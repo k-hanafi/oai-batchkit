@@ -1,0 +1,19 @@
+{
+  "name": "batchkit-shell",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Electron shell that boots the batchkit Python backend and renders the frontend.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.5.0",
+    "@electron-forge/maker-dmg": "^7.5.0",
+    "@electron-forge/maker-zip": "^7.5.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.5.0",
+    "electron": "^33.2.1"
+  }
+}
