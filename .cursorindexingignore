@@ -1,0 +1,12 @@
+# Indexing only: agents can still read these via scripts, terminal, or explicit asks.
+
+runs/
+outputs/
+**/*.jsonl
+**/*.log
+
+**/__pycache__/
+**/.pytest_cache/
+**/.venv/
+**/venv/
+.DS_Store

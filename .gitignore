@@ -55,6 +55,7 @@ dmypy.json
 # Editors / IDEs
 .vscode/
 .idea/
+.cursor/rules/
 *.swp
 *.swo
 *~
@@ -76,3 +77,11 @@ runs/
 *.log
 *.lockfile
 state.json.tmp.*
+
+# Node / Vite / Electron
+node_modules/
+**/dist/
+**/out/
+*.tsbuildinfo
+.vite/
+coverage/
