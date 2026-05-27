@@ -4,10 +4,10 @@ overview: Rebuild oai-batchkit as an Electron desktop app with a React Flow canv
 todos:
   - id: phase0_scaffold
     content: "Phase 0: Create backend/frontend/shell repo layout; wire up pyproject.toml, Vite, Tauri config; install ruff/mypy/pytest/eslint/prettier/vitest; CI workflow green on a no-op PR."
-    status: pending
+    status: completed
   - id: phase1_engine
     content: "Phase 1: Port directness engine into backend/src/batchkit/{domain,engine,providers}; define Provider Protocol; implement OpenAI adapter; smoke-test end-to-end against the sample CSV with a mocked provider."
-    status: pending
+    status: completed
   - id: phase2_store
     content: "Phase 2: Add SQLAlchemy 2.0 async ORM (no Alembic for MVP; use metadata.create_all at startup); implement JobRepo/RunRepo/BatchRepo; swap engine's JSON state.json for Store-based persistence."
     status: pending
@@ -43,6 +43,8 @@ isProject: false
 - **Background execution:** Electron's main process spawns the Python backend as a child process on launch and kills it on app quit. The poller lives in the Python backend; jobs keep polling regardless of window state.
 
 *Electron was chosen over Tauri after weighing tradeoffs: Tauri is ~10x smaller bundle and more modern, but Electron has 10+ years of ecosystem maturity and Stack Overflow coverage. For a learning-focused project where unblocking yourself matters more than bundle size, Electron wins.*
+
+*Status as of end of Phase 1: the Electron-vs-Tauri choice is deliberately deferred to the start of Phase 7. `shell/` contains a 40-line Electron stub from Phase 0 scaffolding; Phases 2–6 do not touch `shell/`, so the cost of switching at Phase 7 is the same as switching today. Revisit with full hands-on UI experience at that point.*
 
 If any of these are wrong, say so before I start — they're easy to change now, painful later.
 
