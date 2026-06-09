@@ -55,7 +55,6 @@ dmypy.json
 # Editors / IDEs
 .vscode/
 .idea/
-.cursor/rules/
 *.swp
 *.swo
 *~
