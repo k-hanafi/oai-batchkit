@@ -2,7 +2,7 @@
 
 A visual desktop app for running massive OpenAI [Batch API](https://platform.openai.com/docs/guides/batch) jobs without rebuilding the surrounding pipeline every time.
 
-> **Status:** under active rebuild. The original Python CLI framework is being replaced with an Electron + React + FastAPI desktop app so the toolkit is approachable to non-engineer researchers. Phase 0 (monorepo scaffold) is done. Full architecture and reasoning in [`.cursor/plans/batchkit-mvp-architecture_4b392a9e.plan.md`](.cursor/plans/batchkit-mvp-architecture_4b392a9e.plan.md).
+> **Status:** under active rebuild. The original Python CLI framework is being replaced with an Electron + React + FastAPI desktop app so the toolkit is approachable to non-engineer researchers. Phases 0–1 (scaffold + engine port) are done. Full architecture and reasoning in [`plans/batchkit-mvp-architecture_4b392a9e.plan.md`](plans/batchkit-mvp-architecture_4b392a9e.plan.md). Agent instructions for all coding tools: [`AGENTS.md`](AGENTS.md).
 
 ## Table of contents
 
@@ -36,7 +36,7 @@ I built that pipeline three times across two research projects before pulling it
 Eight phases, each ending with a runnable artifact.
 
 - [x] **Phase 0:** Monorepo scaffold (backend, frontend, shell) with strict typing, linting, and CI from day 1.
-- [ ] **Phase 1:** Port the batch engine behind a `Provider` protocol (OpenAI today, Anthropic and Google later as new files, not refactors).
+- [x] **Phase 1:** Port the batch engine behind a `Provider` protocol (OpenAI today, Anthropic and Google later as new files, not refactors).
 - [ ] **Phase 2:** SQLite-backed job state via SQLAlchemy.
 - [ ] **Phase 3:** FastAPI REST API plus a WebSocket channel for live progress.
 - [ ] **Phase 4:** Background poller so jobs survive window close.
@@ -49,6 +49,8 @@ Eight phases, each ending with a runnable artifact.
 
 ```
 oai-batchkit/
+  AGENTS.md   Agent instructions (Cursor, Claude Code, Codex, cloud agents)
+  plans/      Architecture and phased build plans
   backend/    FastAPI app, batch engine, SQLite store, OpenAI provider adapter
   frontend/   Vite + React + TypeScript + Tailwind. The visual canvas lives here.
   shell/      Electron shell. Hosts the frontend and (later) supervises the backend.
