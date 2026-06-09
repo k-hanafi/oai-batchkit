@@ -84,3 +84,8 @@ node_modules/
 *.tsbuildinfo
 .vite/
 coverage/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
